@@ -5,9 +5,21 @@ import React from 'react';
 //   base: "http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID="
 // }
 
+const dateBuilder = (d) => {
+  let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+  let day = days[d.getDay()];
+  let date = d.getDate();
+  let month = months[d.getMonth()];
+  let year = d.getFullYear();
+
+  return `${day} ${date} ${month} ${year}`
+}
+
 function App() {
   return (
-    <div className="app warm">
+    <div className="app">
       <main>
         <div className="search-box">
           <input
@@ -16,6 +28,15 @@ function App() {
           placeholder="Search..."
           />
         </div>
+        <div className="location-box">
+          <div className="location">New York City, US</div>
+          <div className="date">{dateBuilder(new Date())}</div>
+        </div>
+        <div className="weather-box">
+          <div className="temp">15 C</div>
+          <div className="weather">Sunny</div>
+        </div>
+
       </main>
     </div>
   );
